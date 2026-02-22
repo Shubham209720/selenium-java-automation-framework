@@ -60,12 +60,10 @@ public class WebTablesPage extends BasePage {
 
     public void deleteRecord(String fName) {
 
-    	By deleteLocator = By.xpath("//td[normalize-space()='" + fName + "']/parent::tr//span[contains(@id,'delete')]"
-    	    );
+        By deleteLocator = By.xpath("//td[normalize-space()='" + fName + "']/parent::tr//span[contains(@id,'delete')]");
+        WebElement deleteBtn = driver.findElement(deleteLocator);
 
-        utils.waitForClickable(deleteLocator);
-
-        driver.findElement(deleteLocator).click();
-
+        // Use ElementsUtils click for safe click
+        utils.click(deleteBtn);
     }
 }
